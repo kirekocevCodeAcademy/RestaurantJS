@@ -9,6 +9,15 @@
 
     form.addEventListener('submit', event => {
 
+        if (parseInt(cuisine.value) === 0) {
+            let cuisineError = $("#cuisineError");
+            cuisineError.text("Invalid Selection");
+            cuisine.style.borderColor = "red";
+            cuisine.focus();
+            event.preventDefault();
+            return;
+        }
+
         let dataToPost = {
             name: name.value,
             location: locationRes.value,
