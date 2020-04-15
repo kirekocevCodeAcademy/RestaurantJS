@@ -16,6 +16,10 @@
         };
 
         let method = "POST";
+        if (id) {
+            method = "PUT";
+            url += `/${id}`;
+        }
 
         let promiseCreate = $.ajax({
             headers: {
