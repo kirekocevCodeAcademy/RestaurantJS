@@ -4,7 +4,8 @@
         name = form.elements["restaurantName"],
         cuisine = form.elements["ddlCuisine"],
         locationRes = form.elements["location"],
-        url = "http://kirekocev.no-ip.biz/api/Restaurants"
+        url = "http://kirekocev.no-ip.biz/api/Restaurants",
+        id = parseInt(document.location.search.replace('?id=', ''));
 
     form.addEventListener('submit', event => {
 
@@ -44,6 +45,15 @@
                 select.appendChild(option);
             }
         });
+
+    if (id) {
+        $.get(url + `/${id}`)
+            .then(function (response) {
+                name.value = response.name;
+                locationRes.value = response.location;
+                cuisine.value = response.cuisine;
+            });
+    }
 });
 
 function sucess() {
