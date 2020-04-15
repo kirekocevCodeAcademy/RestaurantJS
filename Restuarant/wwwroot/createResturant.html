@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <h1 class="text-center">Restaurant</h1>
+    <form id="createResturant" class="container">
+        <div class="well">
+            <div class="form-row">
+                <div class="form-group col-sm-6">
+                    <label>Restaurant Name</label>
+                    <input class="form-control" name="restaurantName" />
+                    <span class="text-danger" id="nameError"></span>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label>Cuisine</label>
+                    <select class="form-control" name="ddlCuisine" id="ddlCuisine">
+                        <option value="">Pick a Cuisine</option>
+                        <option value="1">Italian</option>
+                        <option value="2">Franch</option>
+                        <option value="3">Mexican</option>
+                    </select>
+                    <span class="text-danger" id="cuisineError"></span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-sm-12">
+                    <label>Location</label>
+                    <input class="form-control" name="location" />
+                    <span class="text-danger" id="locationError"></span>
+                </div>
+            </div>
+            <a href="../index.html" class="btn btn-primary">Cancel</a>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+    </form>
+</body>
+</html>
+<script type="text/javascript" src="/lib/jquery/jquery.js"></script>
+<script type="text/javascript" src="/lib/createResturant.js"></script>
