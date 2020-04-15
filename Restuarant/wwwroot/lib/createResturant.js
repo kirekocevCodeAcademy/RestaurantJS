@@ -1,35 +1,49 @@
-﻿let form = document.getElementById("createResturant");
-let name = form.elements["restaurantName"];
-let cuisine = form.elements["ddlCuisine"];
-let locationRes = form.elements["location"];
+﻿$(function () {
 
-form.addEventListener('submit', event => {
+    let form = document.getElementById("createResturant"),
+        name = form.elements["restaurantName"],
+        cuisine = form.elements["ddlCuisine"],
+        locationRes = form.elements["location"],
+        url = "http://kirekocev.no-ip.biz/api/Restaurants"
 
-    let dataToPost = {
-        name: name.value,
-        location: locationRes.value,
-        cuisine: parseInt(cuisine.value)
-    };
+    form.addEventListener('submit', event => {
 
-    let method = "POST",
-        url = "http://kirekocev.no-ip.biz/api/Restaurants";
+        let dataToPost = {
+            name: name.value,
+            location: locationRes.value,
+            cuisine: parseInt(cuisine.value)
+        };
 
-    let promiseCreate = $.ajax({
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        type: method,
-        url: url,
-        data: JSON.stringify(dataToPost),
-        dataType: "json"
+        let method = "POST";
+
+        let promiseCreate = $.ajax({
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            type: method,
+            url: url,
+            data: JSON.stringify(dataToPost),
+            dataType: "json"
+        });
+
+        promiseCreate.then(
+            _ => sucess(),
+            error => console.log(error)
+        );
+
+        event.preventDefault();
     });
 
-    promiseCreate.then(
-        _ => sucess(),
-        error => console.log(error)
-    );
-
-    event.preventDefault();
+    $.get(url +'/cusine')
+        .then(function (data) {
+            let select = document.getElementById("ddlCuisine");
+            for (let i = 0; i < data.length; i++) {
+                let option = document.createElement("option");
+                option.value = data[i].value;
+                option.textContent = data[i].name;
+                select.appendChild(option);
+            }
+        });
 });
 
 function sucess() {
