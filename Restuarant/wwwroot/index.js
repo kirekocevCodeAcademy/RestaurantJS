@@ -12,6 +12,12 @@
                         "render": function (data) {
                             return cuisines[data];
                         }
+                    },
+                    {
+                        "data": "id",
+                        "render": function (data) {
+                            return '<a class="btn btn-info btn-sm" href=../createResturant.html?id=' + data + '>' + 'Edit' + '</a>';
+                        }
                     }
                 ]
             });
